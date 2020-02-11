@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css" media="all">
+    <title>Weather</title>
+</head>
+
+
+
+<body>
+    <div id='navbar'>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Weather</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+                <!--  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form> -->
+                <div id="formDiv" class="form-inline my-2 my-lg-2">
+                    <div style="padding: 10px;">
+                        <input type="text" class="form-control" placeholder="Enter City Name" name="city" id="city">
+                    </div>
+                    <div style="padding: 10px;">
+                        <input id="sub" type="submit" onclick="getURL()" class="btn btn-outline-primary my-2 my-sm-0"
+                            value="submit">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class='content' id='content'>
+        <h1>{{ name }}</h1>
+        <img src="{{ src }}" alt="" width="100px">
+        <h1 style="font-size: 80px;">{{ temp }}°C</h1>
+        <hr>
+
+    </div>
+    <!-- <div style="padding: 10px 10px 10px 10px; bottom: 0px">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+    <script>
+        function getURL() {
+            var cityname = document.getElementById('city');
+            var urlink = '/city/' + cityname.value;
+            window.location.replace("http://localhost:5000" + urlink.toString());
+        }
+    </script>
+</body>
+
+</html>
